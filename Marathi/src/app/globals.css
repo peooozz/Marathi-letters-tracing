@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: #fef9c3;
+  --color-foreground: #451a03;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #451a03;
+
+  --color-popover: #ffffff;
+  --color-popover-foreground: #451a03;
+
+  --color-primary: #e11d48;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #ffffff;
+  --color-secondary-foreground: #451a03;
+
+  --color-muted: #fef3c7;
+  --color-muted-foreground: #71717a;
+
+  --color-accent: #fef3c7;
+  --color-accent-foreground: #e11d48;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fafafa;
+
+  --color-border: #fde68a;
+  --color-input: #fde68a;
+  --color-ring: #e11d48;
+
+  --color-chart-1: #ef4444;
+  --color-chart-2: #3b82f6;
+  --color-chart-3: #f97316;
+  --color-chart-4: #eab308;
+  --color-chart-5: #a855f7;
+
+  --color-sidebar: #ffffff;
+  --color-sidebar-foreground: #451a03;
+  --color-sidebar-primary: #e11d48;
+  --color-sidebar-primary-foreground: #ffffff;
+  --color-sidebar-accent: #fef9c3;
+  --color-sidebar-accent-foreground: #e11d48;
+  --color-sidebar-border: #fde68a;
+  --color-sidebar-ring: #e11d48;
+
+  --color-sunny: #fef9c3;
+  --color-letter-red: #ef4444;
+  --color-letter-blue: #3b82f6;
+  --color-letter-orange: #f97316;
+  --color-letter-yellow: #eab308;
+  --color-letter-purple: #a855f7;
+  --color-letter-teal: #14b8a6;
+  --color-letter-green: #22c55e;
+  --color-letter-pink: #ec4899;
+  --color-letter-indigo: #4f46e5;
+
+  --font-display: "Fredoka", sans-serif;
+  --font-body: "Quicksand", sans-serif;
+
+  --radius-lg: 1.5rem;
+  --radius-md: 1rem;
+  --radius-sm: 0.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+
+  :root {
+    --background: #fef9c3;
+    --foreground: #451a03;
+    --card: #ffffff;
+    --card-foreground: #451a03;
+    --popover: #ffffff;
+    --popover-foreground: #451a03;
+    --primary: #e11d48;
+    --primary-foreground: #ffffff;
+    --secondary: #ffffff;
+    --secondary-foreground: #451a03;
+    --muted: #fef3c7;
+    --muted-foreground: #71717a;
+    --accent: #fef3c7;
+    --accent-foreground: #e11d48;
+    --destructive: #ef4444;
+    --destructive-foreground: #fafafa;
+    --border: #fde68a;
+    --input: #fde68a;
+    --ring: #e11d48;
+    --radius: 1.5rem;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 800;
+  }
+
+  .text-rainbow {
+    background: linear-gradient(to right, #ef4444, #f59e0b, #10b981, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    max-width: 72rem;
+  }
+
+  .tile-bubble {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tile-bubble::before,
+  .tile-bubble::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .tile-bubble::before {
+    width: 40px;
+    height: 40px;
+    top: -10px;
+    left: -10px;
+  }
+
+  .tile-bubble::after {
+    width: 20px;
+    height: 20px;
+    bottom: 15%;
+    right: 10%;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .shadow-kid {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .hover-pop {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .hover-pop:hover {
+    transform: scale(1.05);
+  }
+}
+
+nextjs-portal {
+  display: none !important;
+}
